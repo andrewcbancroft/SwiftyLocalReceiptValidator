@@ -13,7 +13,7 @@ This repository contains an example implementation of local receipt validation l
 2. You need OpenSSL to be statically-linked to your project. I wrote "[OpenSSL for iOS & Swift the Easy Way](https://www.andrewcbancroft.com/2015/09/21/openssl-for-ios-swift-the-easy-way/)" to guide you through this process if you need help.
 
 # Disclaimer
-Preventing software piracy is hard. The code presented in this repository is not meant to protect you against anauthorized usage of your app or its features. This code is meant to be used for learning purposes only. If you use this code in your app, you do it at your own risk. 
+Preventing software piracy is hard. The code presented in this repository is not meant to protect you against unauthorized usage of your app or its features. This code is meant to be used for learning purposes only. If you use this code in your app, you do it at your own risk. 
 
 You must take additional efforts to obfuscate the code presented here to thwart an attacker's attempt at circumventing the receipt validation logic contained within this repository.
 
