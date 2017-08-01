@@ -1,9 +1,21 @@
 # Swifty Local Receipt Validator
 This repository contains an example implementation of local receipt validation logic for iOS in Swift.
 
+* [Prerequisites](#prerequisites)
+* [Disclaimer](#disclaimer)
+* [Usage](#usage)
+	* [Output Types](#output-types)
+	* [Call Site](#call-site)
+* [Explanatory Guides](#explanatory-guides)
+
 # Prerequisites
 1. You need a copy of Apple's Root Certificate included in your application bundle for local receipt validation to succeed. I wrote "[Receipt Validation – Verifying a Receipt Signature in Swift](https://www.andrewcbancroft.com/2017/07/16/receipt-validation-verifying-a-receipt-signature-in-swift/)" to guide you through this process if you need help.
 2. You need OpenSSL to be statically-linked to your project. I wrote "[OpenSSL for iOS & Swift the Easy Way](https://www.andrewcbancroft.com/2015/09/21/openssl-for-ios-swift-the-easy-way/)" to guide you through this process if you need help.
+
+# Disclaimer
+Preventing software piracy is hard. The code presented in this repository is not meant to protect you against anauthorized usage of your app or its features. This code is meant to be used for learning purposes only. If you use this code in your app, you do it at your own risk. 
+
+You must take additional efforts to obfuscate the code presented here to thwart an attacker's attempt at circumventing the receipt validation logic contained within this repository.
 
 # Usage
 ## Output Types
@@ -79,8 +91,3 @@ Throughout the development of the code in this repository, I wrote up several gu
 * [Receipt Validation – Verifying a Receipt Signature in Swift](https://www.andrewcbancroft.com/2017/07/16/receipt-validation-verifying-a-receipt-signature-in-swift/)
 * [Receipt Validation – Parse and Decode a Receipt with Swift](https://www.andrewcbancroft.com/2017/07/27/receipt-validation-parsing-a-receipt-with-swift/)
 * [Finalizing Receipt Validation in Swift – Computing a GUID Hash](https://www.andrewcbancroft.com/2017/07/31/finalizing-receipt-validation-in-swift-computing-a-guid-hash/)
-
-# Disclaimer
-Preventing software piracy is very, very difficult. The code presented in this repository is not meant to protect you against anauthorized usage of your app or its features. This code is meant to be used for learning purposes only. Using this code in your app is done at your own risk. 
-
-You must take additional efforts to obfuscate the code presented here to thwart an attacker's attempt at circumventing the receipt validation logic contained within this repository.
