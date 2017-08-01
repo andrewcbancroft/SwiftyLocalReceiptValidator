@@ -1,12 +1,12 @@
 # Swifty Local Receipt Validator
-This is an example implementation of local receipt validation logic for iOS in Swift.
+This repository contains an example implementation of local receipt validation logic for iOS in Swift.
 
 # Prerequisites
 1. You need a copy of Apple's Root Certificate included in your application bundle for local receipt validation to succeed. I wrote "[Receipt Validation – Verifying a Receipt Signature in Swift](https://www.andrewcbancroft.com/2017/07/16/receipt-validation-verifying-a-receipt-signature-in-swift/)" to guide you through this process if you need help.
 2. You need OpenSSL to be statically-linked to your project. I wrote "[OpenSSL for iOS & Swift the Easy Way](https://www.andrewcbancroft.com/2015/09/21/openssl-for-ios-swift-the-easy-way/)" to guide you through this process if you need help.
 
 # Usage
-```
+```swift
 let validationResult = receiptValidator.validateReceipt()
 		
 switch validationResult {
@@ -23,6 +23,7 @@ case .error(let error):
     // etc...
 }
 ```
+
 # Explanatory Guides
 Throughout the development of the code in this repository, I wrote up several guides at https://andrewcbancroft.com explain what each step along the way in the receipt validation process is doing. If you'd like to understand more about what's going on under the hood, you can read up on any step below:
 
