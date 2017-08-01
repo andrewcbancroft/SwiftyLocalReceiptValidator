@@ -6,7 +6,52 @@ This repository contains an example implementation of local receipt validation l
 2. You need OpenSSL to be statically-linked to your project. I wrote "[OpenSSL for iOS & Swift the Easy Way](https://www.andrewcbancroft.com/2015/09/21/openssl-for-ios-swift-the-easy-way/)" to guide you through this process if you need help.
 
 # Usage
+## Output Types
+In order to make sense of the call site, I thought it might be helpful to include the *output* that you can expect from the `ReceiptValidator`:
 ```swift
+enum ReceiptValidationResult {
+	case success(ParsedReceipt)
+	case error(ReceiptValidationError)
+}
+
+enum ReceiptValidationError : Error {
+	case couldNotFindReceipt
+	case emptyReceiptContents
+	case receiptNotSigned
+	case appleRootCertificateNotFound
+	case receiptSignatureInvalid
+	case malformedReceipt
+	case malformedInAppPurchaseReceipt
+	case incorrectHash
+}
+
+struct ParsedReceipt {
+	let bundleIdentifier: String?
+	let bundleIdData: NSData?
+	let appVersion: String?
+	let opaqueValue: NSData?
+	let sha1Hash: NSData?
+	let inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?
+	let originalAppVersion: String?
+	let receiptCreationDate: Date?
+	let expirationDate: Date?
+}
+
+struct ParsedInAppPurchaseReceipt {
+	let quantity: Int?
+	let productIdentifier: String?
+	let transactionIdentifier: String?
+	let originalTransactionIdentifier: String?
+	let purchaseDate: Date?
+	let originalPurchaseDate: Date?
+	let subscriptionExpirationDate: Date?
+	let cancellationDate: Date?
+	let webOrderLineItemId: Int?
+}
+```
+## Call Site
+```swift
+let receiptValidator = ReceiptValidator()
 let validationResult = receiptValidator.validateReceipt()
 		
 switch validationResult {
