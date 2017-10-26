@@ -86,7 +86,7 @@ case .error(let error):
 ```
 
 # Explanatory Guides
-Throughout the development of the code in this repository, I wrote up several guides at https://andrewcbancroft.com explain what each step along the way in the receipt validation process is doing. If you'd like to understand more about what's going on under the hood, you can read up on any step below:
+Throughout the development of the code in this repository, I wrote up several guides at https://www.andrewcbancroft.com to explain what each step along the way in the receipt validation process is doing. If you'd like to understand more about what's going on under the hood, you can read up on any step below:
 
 * [Preparing to Test Receipt Validation for iOS](https://www.andrewcbancroft.com/2015/10/05/preparing-to-test-receipt-validation-for-ios/)
 * [OpenSSL for iOS & Swift the Easy Way](https://www.andrewcbancroft.com/2015/09/21/openssl-for-ios-swift-the-easy-way/)
