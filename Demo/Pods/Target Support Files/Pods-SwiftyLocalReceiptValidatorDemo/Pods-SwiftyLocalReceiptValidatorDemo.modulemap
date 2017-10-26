@@ -1,0 +1,6 @@
+framework module Pods_SwiftyLocalReceiptValidatorDemo {
+  umbrella header "Pods-SwiftyLocalReceiptValidatorDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
