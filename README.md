@@ -11,6 +11,10 @@ This repository contains an example implementation of local receipt validation l
 # Prerequisites
 1. You need a copy of Apple's Root Certificate included in your application bundle for local receipt validation to succeed. I wrote "[Receipt Validation – Verifying a Receipt Signature in Swift](https://www.andrewcbancroft.com/2017/07/16/receipt-validation-verifying-a-receipt-signature-in-swift/)" to guide you through this process if you need help.
 2. You need OpenSSL to be statically-linked to your project. I wrote "[OpenSSL for iOS & Swift the Easy Way](https://www.andrewcbancroft.com/2015/09/21/openssl-for-ios-swift-the-easy-way/)" to guide you through this process if you need help.
+3. You need to include the following additional resources after OpenSSL is installed. Example implementations are provided in the [demo project](https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/tree/master/Demo/SwiftyLocalReceiptValidatorDemo).
+    * [pkcs7_union_accessors.c](https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/Demo/SwiftyLocalReceiptValidatorDemo/pkcs7_union_accessors.c)
+    * [pkcs7_union_accessors.h](https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/Demo/SwiftyLocalReceiptValidatorDemo/pkcs7_union_accessors.h)
+    * [Bridging Header](https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/Demo/SwiftyLocalReceiptValidatorDemo/SwiftyLocalReceiptValidatorDemo-Bridging-Header.h) 
 
 # Disclaimer
 Preventing software piracy is hard. The code presented in this repository is not meant to protect you against unauthorized usage of your app or its features. This code is meant to be used for learning purposes only. If you use this code in your app, you do it at your own risk. 
