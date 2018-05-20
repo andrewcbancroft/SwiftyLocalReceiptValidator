@@ -34,6 +34,10 @@
 
 import Foundation
 import StoreKit
+#if os(macOS)
+import IOKit
+import OpenSSL
+#endif
 
 // MARK: Output
 enum ReceiptValidationResult {
@@ -100,11 +104,48 @@ struct ReceiptValidator {
         }
     }
     
-    fileprivate func validateHash(receipt: ParsedReceipt) throws {
-        // Make sure that the ParsedReceipt instances has non-nil values needed for hash comparison
-        guard let receiptOpaqueValueData = receipt.opaqueValue else { throw ReceiptValidationError.incorrectHash }
-        guard let receiptBundleIdData = receipt.bundleIdData else { throw ReceiptValidationError.incorrectHash }
-        guard let receiptHashData = receipt.sha1Hash else { throw ReceiptValidationError.incorrectHash }
+    
+    // Returns a NSData object, containing the device's GUID.
+    private func deviceIdentifierData() -> NSData? {
+        #if os(macOS)
+        
+        var master_port = mach_port_t()
+        var kernResult = IOMasterPort(mach_port_t(MACH_PORT_NULL), &master_port)
+        
+        guard kernResult == KERN_SUCCESS else {
+            return nil
+        }
+        
+        guard let matchingDict = IOBSDNameMatching(master_port, 0, "en0") else {
+            return nil
+        }
+        
+        var iterator = io_iterator_t()
+        kernResult = IOServiceGetMatchingServices(master_port, matchingDict, &iterator)
+        guard kernResult == KERN_SUCCESS else {
+            return nil
+        }
+        
+        var macAddress: NSData?
+        while true {
+            let service = IOIteratorNext(iterator)
+            guard service != 0 else { break }
+            
+            var parentService = io_object_t()
+            kernResult = IORegistryEntryGetParentEntry(service, kIOServicePlane, &parentService)
+            
+            if kernResult == KERN_SUCCESS {
+                macAddress = IORegistryEntryCreateCFProperty(parentService, "IOMACAddress" as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? NSData
+                IOObjectRelease(parentService)
+            }
+            
+            IOObjectRelease(service)
+        }
+        
+        IOObjectRelease(iterator)
+        return macAddress
+        
+        #else // iOS, watchOS, tvOS
         
         var deviceIdentifier = UIDevice.current.identifierForVendor?.uuid
         
@@ -113,7 +154,20 @@ struct ReceiptValidator {
             return UnsafeRawPointer(unsafeDeviceIdentifierPointer)
         })
         
-        let deviceIdentifierData = NSData(bytes: rawDeviceIdentifierPointer, length: 16)
+        return NSData(bytes: rawDeviceIdentifierPointer, length: 16)
+        
+        #endif
+    }
+    
+    fileprivate func validateHash(receipt: ParsedReceipt) throws {
+        // Make sure that the ParsedReceipt instances has non-nil values needed for hash comparison
+        guard let receiptOpaqueValueData = receipt.opaqueValue else { throw ReceiptValidationError.incorrectHash }
+        guard let receiptBundleIdData = receipt.bundleIdData else { throw ReceiptValidationError.incorrectHash }
+        guard let receiptHashData = receipt.sha1Hash else { throw ReceiptValidationError.incorrectHash }
+        
+        guard let deviceIdentifierData = self.deviceIdentifierData() else {
+            throw ReceiptValidationError.malformedReceipt
+        }
         
         // Compute the hash for your app & device
         
@@ -485,3 +539,4 @@ struct ReceiptParser {
         return nil
     }
 }
+
