@@ -6,7 +6,8 @@ This repository contains an example implementation of local receipt validation l
 * [Usage](#usage)
 	* [Output Types](#output-types)
 	* [Call Site](#call-site)
-* [Explanatory Guides](#explanatory-guides)
+* 📝 [Explanatory Guides](#explanatory-guides)
+* 🎥 [Implementing In-app Purchases on iOS at Pluralsight](#implementing-in-app-purchases-on-ios)
 
 # Prerequisites
 1. You need a copy of Apple's Root Certificate included in your application bundle for local receipt validation to succeed. I wrote "[Receipt Validation – Verifying a Receipt Signature in Swift](https://www.andrewcbancroft.com/2017/07/16/receipt-validation-verifying-a-receipt-signature-in-swift/)" to guide you through this process if you need help.
@@ -95,3 +96,15 @@ Throughout the development of the code in this repository, I wrote up several gu
 * [Receipt Validation – Verifying a Receipt Signature in Swift](https://www.andrewcbancroft.com/2017/07/16/receipt-validation-verifying-a-receipt-signature-in-swift/)
 * [Receipt Validation – Parse and Decode a Receipt with Swift](https://www.andrewcbancroft.com/2017/07/27/receipt-validation-parsing-a-receipt-with-swift/)
 * [Finalizing Receipt Validation in Swift – Computing a GUID Hash](https://www.andrewcbancroft.com/2017/07/31/finalizing-receipt-validation-in-swift-computing-a-guid-hash/)
+
+# Implementing In-app Purchases on iOS
+Learning about in-app purchases on iOS?
+
+I am the author of <a href="https://bit.ly/implementing-in-app-purchases-ios" class="alert-link">Implementing In-app Purchases on iOS</a> on <a href="http://bit.ly/ps-author-page" class="alert-link">Pluralsight</a>.  
+
+In the course, you'll learn to offer digital products as in-app purchases from end to end:
+
+❇️ Configure products in App Store Connect & Xcode
+❇️ Build and test a fully-working Store view
+❇️ Protect your revenue by validating App Store receipts
+❇️ Unlock content that users have legitimately purchased
