@@ -105,6 +105,9 @@ I am the author of <a href="https://bit.ly/implementing-in-app-purchases-ios" cl
 In the course, you'll learn to offer digital products as in-app purchases from end to end:
 
 ❇️ Configure products in App Store Connect & Xcode
+
 ❇️ Build and test a fully-working Store view
+
 ❇️ Protect your revenue by validating App Store receipts
+
 ❇️ Unlock content that users have legitimately purchased
