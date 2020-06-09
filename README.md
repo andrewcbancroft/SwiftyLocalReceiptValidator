@@ -100,7 +100,7 @@ Throughout the development of the code in this repository, I wrote up several gu
 # Implementing In-app Purchases on iOS
 Learning about in-app purchases on iOS?
 
-I am the author of <a href="https://bit.ly/implementing-in-app-purchases-ios" class="alert-link">Implementing In-app Purchases on iOS</a> on <a href="http://bit.ly/ps-author-page" class="alert-link">Pluralsight</a>.  
+I am the author of <a href="https://bit.ly/implementing-in-app-purchases-ios" class="alert-link">Implementing In-app Purchases on iOS</a> at <a href="http://bit.ly/ps-author-page" class="alert-link">Pluralsight</a>.  
 
 In the course, you'll learn to offer digital products as in-app purchases from end to end:
 
