@@ -108,6 +108,6 @@ In the course, you'll learn to offer digital products as in-app purchases from e
 
 ❇️ Build and test a fully-working Store view
 
-❇️ Protect your revenue by validating App Store receipts
+❇️ Protect your revenue by validating App Store receipts (I teach server-side validation in the course)
 
 ❇️ Unlock content that users have legitimately purchased
