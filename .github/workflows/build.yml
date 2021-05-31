@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+    branches: '**'
+    pull_request:
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: macos-11.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: setup-cocoapods
+        uses: maxim-lobanov/setup-cocoapods@v1
+        with:
+          podfile-path: Demo/Podfile.lock
+
+      - uses: sersoft-gmbh/xcodebuild-action@v1
+        with:
+          workspace: Demo/SwiftyLocalReceiptValidatorDemo.xcworkspace
+          scheme: SwiftyLocalReceiptValidatorDemo
+          destination: 'platform=iOS Simulator,OS=14.4,name=iPhone 12'
+          action: build 
